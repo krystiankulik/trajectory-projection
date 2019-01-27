@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projection.Controller">
+    <padding>
+        <Insets bottom="10" left="25" right="25" top="25" />
+    </padding>
+    <BorderPane fx:id="borderPane" prefHeight="600.0" prefWidth="800.0">
+      <bottom>
+              <GridPane prefHeight="41.0" prefWidth="657.0" BorderPane.alignment="CENTER">
+                  <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="161.0" minWidth="10.0" prefWidth="161.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="280.0" minWidth="10.0" prefWidth="59.0" />
+               <ColumnConstraints maxWidth="419.0" minWidth="218.0" prefWidth="336.0" />
+                  </columnConstraints>
+                  <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  </rowConstraints>
+            <children>
+                  <HBox prefHeight="41.0" prefWidth="252.0" GridPane.columnIndex="3">
+                      <children>
+                          <Label prefHeight="17.0" prefWidth="66.0" text="%projection.general.language">
+                        <HBox.margin>
+                           <Insets bottom="5.0" left="5.0" right="5.0" top="10.0" />
+                        </HBox.margin>
+                     </Label>
+                          <Button mnemonicParsing="false" onAction="#loadEnglishLocale" prefHeight="12.0" prefWidth="69.0" text="%projection.languages.english">
+                        <HBox.margin>
+                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                        </HBox.margin>
+                     </Button>
+                          <Button mnemonicParsing="false" onAction="#loadPolishLocale" prefHeight="1.0" prefWidth="63.0" text="%projection.languages.polish">
+                        <HBox.margin>
+                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                        </HBox.margin>
+                     </Button>
+                      </children>
+                  </HBox>
+            </children>
+              </GridPane>
+      </bottom>
+      <top>
+         <GridPane prefHeight="60.0" prefWidth="747.0" BorderPane.alignment="CENTER">
+           <columnConstraints>
+             <ColumnConstraints hgrow="SOMETIMES" maxWidth="192.0" minWidth="10.0" prefWidth="111.0" />
+             <ColumnConstraints hgrow="SOMETIMES" maxWidth="337.0" minWidth="10.0" prefWidth="167.0" />
+               <ColumnConstraints hgrow="SOMETIMES" maxWidth="337.0" minWidth="0.0" prefWidth="58.0" />
+               <ColumnConstraints hgrow="SOMETIMES" maxWidth="429.0" minWidth="10.0" prefWidth="160.0" />
+               <ColumnConstraints hgrow="SOMETIMES" maxWidth="438.0" minWidth="10.0" prefWidth="63.0" />
+               <ColumnConstraints hgrow="SOMETIMES" maxWidth="406.0" minWidth="10.0" prefWidth="232.0" />
+           </columnConstraints>
+           <rowConstraints>
+             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+           </rowConstraints>
+            <children>
+                      <Button fx:id="clearButton" mnemonicParsing="false" onAction="#clear" prefHeight="23.0" prefWidth="85.0" text="%projection.button.clear" GridPane.rowIndex="1" />
+                      <Button fx:id="simulateButton" mnemonicParsing="false" onAction="#simulate" prefHeight="23.0" prefWidth="85.0" text="%projection.button.simulate" />
+                        <HBox prefHeight="25.0" prefWidth="204.0" GridPane.columnIndex="1">
+                            <children>
+                                <Label prefHeight="17.0" prefWidth="153.0" text="%projection.button.initial.velocity">
+                                    <HBox.margin>
+                                        <Insets bottom="2.0" left="2.0" right="5.0" top="5.0" />
+                                    </HBox.margin>
+                                </Label>
+                            </children>
+                        </HBox>
+                        <HBox prefHeight="25.0" prefWidth="203.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                            <children>
+                                <Label prefHeight="17.0" prefWidth="152.0" text="%projection.button.gravity.acceleration">
+                                    <HBox.margin>
+                                        <Insets bottom="2.0" left="2.0" right="5.0" top="5.0" />
+                                    </HBox.margin>
+                                </Label>
+                            </children>
+                        </HBox>
+                        <HBox prefHeight="25.0" prefWidth="155.0" GridPane.columnIndex="3">
+                            <children>
+                                <Label prefHeight="17.0" prefWidth="157.0" text="%projection.button.angle">
+                                    <HBox.margin>
+                                        <Insets bottom="2.0" left="2.0" right="5.0" top="5.0" />
+                                    </HBox.margin>
+                        <padding>
+                           <Insets left="30.0" />
+                        </padding>
+                                </Label>
+                            </children>
+                  <GridPane.margin>
+                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                  </GridPane.margin>
+                        </HBox>
+                      <HBox prefHeight="49.0" prefWidth="484.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                          <children>
+                              <Label text="%projection.button.drag.coefficient">
+                                  <HBox.margin>
+                                      <Insets bottom="2.0" left="2.0" right="5.0" top="5.0" />
+                                  </HBox.margin>
+                        <padding>
+                           <Insets left="30.0" />
+                        </padding>
+                              </Label>
+                          </children>
+                      </HBox>
+                        <CheckBox fx:id="includeDragCheckBox" mnemonicParsing="false" prefHeight="17.0" prefWidth="193.0" text="%projection.button.air.resistance" GridPane.columnIndex="5" GridPane.rowIndex="1">
+                  <GridPane.margin>
+                     <Insets bottom="5.0" left="30.0" right="5.0" top="5.0" />
+                  </GridPane.margin>
+                        </CheckBox>
+                          <TextField fx:id="velocityTextField" prefHeight="25.0" prefWidth="28.0" GridPane.columnIndex="2" />
+                          <TextField fx:id="gravityAccTextField" prefHeight="25.0" prefWidth="27.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                          <TextField fx:id="angleTextField" prefHeight="25.0" prefWidth="39.0" GridPane.columnIndex="4" />
+                        <TextField fx:id="dragTextField" prefHeight="25.0" prefWidth="66.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+            </children>
+            <BorderPane.margin>
+               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </BorderPane.margin>
+         </GridPane>
+      </top>
+    </BorderPane>
+    <columnConstraints>
+        <ColumnConstraints />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints />
+    </rowConstraints>
+</GridPane>
