@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
+
 import java.net.URL;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -26,9 +27,6 @@ public class Controller implements Initializable {
 
     @FXML
     private Button simulateButton;
-
-    @FXML
-    private Button clearButton;
 
     @FXML
     private TextField velocityTextField;
@@ -49,14 +47,23 @@ public class Controller implements Initializable {
     private ConcurrentLinkedQueue<XYChart.Data> points = new ConcurrentLinkedQueue<>();
     private ExecutorService executor;
     private Projector projector;
+    private boolean stopSimulation;
+
+    private final NumberAxis xAxis = new NumberAxis();
+    private final NumberAxis yAxis = new NumberAxis();
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         projector = new Projector();
         setDefaultParameters();
         validateInput();
-        final NumberAxis xAxis = new NumberAxis(Messages.getString("projection.chart.axis.x"), 0, 100, 10);
-        final NumberAxis yAxis = new NumberAxis(Messages.getString("projection.chart.axis.y"), 0, 100, 10);
+
+        xAxis.setLabel(Messages.getString("projection.chart.axis.x"));
+        yAxis.setLabel(Messages.getString("projection.chart.axis.y"));
+
+        resetAxis(xAxis);
+        resetAxis(yAxis);
 
         lineChart = new LineChart(xAxis, yAxis);
         lineChart.setAnimated(false);
@@ -71,6 +78,13 @@ public class Controller implements Initializable {
         borderPane.setCenter(lineChart);
         updateChart();
 
+    }
+
+    private void resetAxis(NumberAxis axis) {
+        axis.setAutoRanging(false);
+        axis.setLowerBound(0);
+        axis.setUpperBound(100);
+        axis.setTickUnit(10);
     }
 
     private void setDefaultParameters() {
@@ -95,7 +109,7 @@ public class Controller implements Initializable {
 
     @FXML
     public void simulate() {
-        projector.setVelocity( Double.valueOf(velocityTextField.getText()));
+        projector.setVelocity(Double.valueOf(velocityTextField.getText()));
         projector.setAngle(Double.valueOf(angleTextField.getText()));
         projector.setGravityAcc(Double.valueOf(gravityAccTextField.getText()));
         projector.setDragCoefficient(Double.valueOf(dragTextField.getText()));
@@ -108,26 +122,38 @@ public class Controller implements Initializable {
 
     @FXML
     public void clear() {
+        stopSimulation = true;
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         lineChart.getData().clear();
+        resetAxis(xAxis);
+        resetAxis(yAxis);
     }
 
     public void drawChart(UnaryOperator<Double> calculateX, UnaryOperator<Double> calculateY) {
 
         XYChart.Series series = new XYChart.Series();
-            series.setName(projector.getSeriesDescription());
+        series.setName(projector.getSeriesDescription());
 
 
         lineChart.getData().add(series);
 
         setCurrentSeries(series);
         simulateButton.setDisable(true);
-        clearButton.setDisable(true);
+        stopSimulation = false;
         executor.execute(new AddPosition(0, calculateX, calculateY));
     }
 
 
-
     private void addPointsToSeries() {
+
+        if (stopSimulation) {
+            points.clear();
+        }
 
         if (!points.isEmpty()) {
             currentSeries.getData().add(points.remove());
@@ -173,13 +199,23 @@ public class Controller implements Initializable {
         @Override
         public void run() {
             try {
-                points.add(new XYChart.Data(calculateX.apply(time), calculateY.apply(time)));
+                double positionX = calculateX.apply(time);
+                double positionY = calculateY.apply(time);
+                if (positionX > xAxis.getUpperBound()) {
+                    xAxis.setUpperBound(xAxis.getUpperBound() * 2);
+                    xAxis.setTickUnit(xAxis.getTickUnit() * 2);
+                }
+
+                if (positionY > yAxis.getUpperBound()) {
+                    yAxis.setUpperBound(yAxis.getUpperBound() * 2);
+                    yAxis.setTickUnit(yAxis.getTickUnit() * 2);
+                }
+                points.add(new XYChart.Data(positionX, positionY));
                 Thread.sleep(30);
-                if (calculateY.apply(time) >= 0) {
+                if (positionY >= 0 && !stopSimulation) {
                     executor.execute(new AddPosition(time + 0.03, calculateX, calculateY));
                 } else {
                     simulateButton.setDisable(false);
-                    clearButton.setDisable(false);
                 }
             } catch (InterruptedException ex) {
                 ex.printStackTrace();
