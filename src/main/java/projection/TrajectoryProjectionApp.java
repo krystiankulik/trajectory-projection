@@ -22,10 +22,13 @@ public class TrajectoryProjectionApp extends Application {
         ResourceBundle bundle = ResourceBundle.getBundle("bundle", locale);
         Messages.setBundle(bundle);
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("stage.fxml"),bundle);
+        String style= getClass().getClassLoader().getResource("styles.css").toExternalForm();
+        root.getStylesheets().add(style);
         stage.setTitle(Messages.getString("projection.application.title"));
         stage.setScene(new Scene(root,800,600));
         stage.setResizable(false);
         stage.show();
+        setUserAgentStylesheet(STYLESHEET_CASPIAN);
     }
 
 }

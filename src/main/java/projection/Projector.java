@@ -11,7 +11,7 @@ public class Projector {
     private Boolean includeDrag;
 
     public Projector() {
-        this(30.0, 45.0, 9.81, 0.3, true);
+        this(50.0, 60.0, 9.81, 0.6, true);
     }
 
     public Projector(Double velocity, Double angle, Double gravityAcc, Double dragCoefficient, Boolean includeDrag) {
@@ -20,9 +20,7 @@ public class Projector {
         this.gravityAcc = gravityAcc;
         this.dragCoefficient = dragCoefficient;
         this.includeDrag = includeDrag;
-
     }
-
 
     public double calculateXVacuum(double time) {
         double angleRec = Math.toRadians(angle);

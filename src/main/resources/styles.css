@@ -1,0 +1,5 @@
+.root {
+    -fx-background-color: linear-gradient(#7dce94, #f6f5f3);
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-font-family: "Century Gothic" ;
+}

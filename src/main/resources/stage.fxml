@@ -10,6 +10,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
 <GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projection.Controller">
     <padding>
@@ -19,34 +20,43 @@
       <bottom>
               <GridPane prefHeight="41.0" prefWidth="657.0" BorderPane.alignment="CENTER">
                   <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="161.0" minWidth="10.0" prefWidth="161.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="280.0" minWidth="10.0" prefWidth="59.0" />
-               <ColumnConstraints maxWidth="419.0" minWidth="218.0" prefWidth="336.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="137.0" minWidth="10.0" prefWidth="137.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="469.0" minWidth="10.0" prefWidth="428.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="280.0" minWidth="10.0" prefWidth="66.0" />
+               <ColumnConstraints maxWidth="419.0" minWidth="164.0" prefWidth="168.0" />
                   </columnConstraints>
                   <rowConstraints>
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   </rowConstraints>
             <children>
-                  <HBox prefHeight="41.0" prefWidth="252.0" GridPane.columnIndex="3">
+                  <HBox prefHeight="41.0" prefWidth="199.0" GridPane.columnIndex="3">
                       <children>
-                          <Label prefHeight="17.0" prefWidth="66.0" text="%projection.general.language">
-                        <HBox.margin>
-                           <Insets bottom="5.0" left="5.0" right="5.0" top="10.0" />
-                        </HBox.margin>
-                     </Label>
-                          <Button mnemonicParsing="false" onAction="#loadEnglishLocale" prefHeight="12.0" prefWidth="69.0" text="%projection.languages.english">
+                          <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#loadEnglishLocale" prefHeight="20.0" prefWidth="58.0" text="%projection.languages.english">
                         <HBox.margin>
                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                         </HBox.margin>
+                        <font>
+                           <Font name="Century Gothic" size="10.0" />
+                        </font>
                      </Button>
-                          <Button mnemonicParsing="false" onAction="#loadPolishLocale" prefHeight="1.0" prefWidth="63.0" text="%projection.languages.polish">
+                          <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#loadPolishLocale" prefHeight="20.0" prefWidth="60.0" text="%projection.languages.polish">
                         <HBox.margin>
                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                         </HBox.margin>
+                        <font>
+                           <Font size="10.0" />
+                        </font>
                      </Button>
                       </children>
                   </HBox>
+                    <Label prefHeight="17.0" prefWidth="82.0" text="%projection.general.language" GridPane.columnIndex="2" GridPane.halignment="RIGHT">
+                  <font>
+                     <Font name="Century Gothic" size="10.0" />
+                  </font>
+                  <GridPane.margin>
+                     <Insets bottom="10.0" />
+                  </GridPane.margin>
+               </Label>
             </children>
               </GridPane>
       </bottom>
@@ -54,11 +64,11 @@
          <GridPane prefHeight="60.0" prefWidth="747.0" BorderPane.alignment="CENTER">
            <columnConstraints>
              <ColumnConstraints hgrow="SOMETIMES" maxWidth="192.0" minWidth="10.0" prefWidth="111.0" />
-             <ColumnConstraints hgrow="SOMETIMES" maxWidth="337.0" minWidth="10.0" prefWidth="167.0" />
-               <ColumnConstraints hgrow="SOMETIMES" maxWidth="337.0" minWidth="0.0" prefWidth="58.0" />
-               <ColumnConstraints hgrow="SOMETIMES" maxWidth="429.0" minWidth="10.0" prefWidth="160.0" />
-               <ColumnConstraints hgrow="SOMETIMES" maxWidth="438.0" minWidth="10.0" prefWidth="63.0" />
-               <ColumnConstraints hgrow="SOMETIMES" maxWidth="406.0" minWidth="10.0" prefWidth="232.0" />
+             <ColumnConstraints hgrow="SOMETIMES" maxWidth="337.0" minWidth="10.0" prefWidth="190.0" />
+               <ColumnConstraints hgrow="SOMETIMES" maxWidth="337.0" minWidth="0.0" prefWidth="55.0" />
+               <ColumnConstraints hgrow="SOMETIMES" maxWidth="429.0" minWidth="10.0" prefWidth="181.0" />
+               <ColumnConstraints hgrow="SOMETIMES" maxWidth="438.0" minWidth="10.0" prefWidth="52.0" />
+               <ColumnConstraints hgrow="SOMETIMES" maxWidth="406.0" minWidth="10.0" prefWidth="202.0" />
            </columnConstraints>
            <rowConstraints>
              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -69,7 +79,7 @@
                       <Button fx:id="simulateButton" mnemonicParsing="false" onAction="#simulate" prefHeight="23.0" prefWidth="85.0" text="%projection.button.simulate" />
                         <HBox prefHeight="25.0" prefWidth="204.0" GridPane.columnIndex="1">
                             <children>
-                                <Label prefHeight="17.0" prefWidth="153.0" text="%projection.button.initial.velocity">
+                                <Label prefHeight="17.0" prefWidth="184.0" text="%projection.button.initial.velocity">
                                     <HBox.margin>
                                         <Insets bottom="2.0" left="2.0" right="5.0" top="5.0" />
                                     </HBox.margin>
@@ -78,7 +88,7 @@
                         </HBox>
                         <HBox prefHeight="25.0" prefWidth="203.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                             <children>
-                                <Label prefHeight="17.0" prefWidth="152.0" text="%projection.button.gravity.acceleration">
+                                <Label prefHeight="17.0" prefWidth="187.0" text="%projection.button.gravity.acceleration">
                                     <HBox.margin>
                                         <Insets bottom="2.0" left="2.0" right="5.0" top="5.0" />
                                     </HBox.margin>
@@ -87,7 +97,7 @@
                         </HBox>
                         <HBox prefHeight="25.0" prefWidth="155.0" GridPane.columnIndex="3">
                             <children>
-                                <Label prefHeight="17.0" prefWidth="157.0" text="%projection.button.angle">
+                                <Label text="%projection.button.angle">
                                     <HBox.margin>
                                         <Insets bottom="2.0" left="2.0" right="5.0" top="5.0" />
                                     </HBox.margin>
@@ -119,7 +129,7 @@
                         </CheckBox>
                           <TextField fx:id="velocityTextField" prefHeight="25.0" prefWidth="28.0" GridPane.columnIndex="2" />
                           <TextField fx:id="gravityAccTextField" prefHeight="25.0" prefWidth="27.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                          <TextField fx:id="angleTextField" prefHeight="25.0" prefWidth="39.0" GridPane.columnIndex="4" />
+                          <TextField fx:id="angleTextField" prefHeight="25.0" prefWidth="80.0" GridPane.columnIndex="4" />
                         <TextField fx:id="dragTextField" prefHeight="25.0" prefWidth="66.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
             </children>
             <BorderPane.margin>

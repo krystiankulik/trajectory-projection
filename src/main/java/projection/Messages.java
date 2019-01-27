@@ -18,7 +18,6 @@ public class Messages {
         } catch (MissingResourceException e) {
             return "!" + key + "!";
         }
-
     }
 
     public static String getString(String key, Object... params) {
