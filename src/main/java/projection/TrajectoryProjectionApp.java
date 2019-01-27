@@ -30,5 +30,4 @@ public class TrajectoryProjectionApp extends Application {
         stage.show();
         setUserAgentStylesheet(STYLESHEET_CASPIAN);
     }
-
 }

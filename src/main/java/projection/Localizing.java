@@ -19,5 +19,4 @@ public class Localizing {
             e.printStackTrace();
         }
     }
-
 }
