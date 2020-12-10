@@ -11,4 +11,4 @@ Equation for motion with air resistance<br>
 <img src="https://i.ibb.co/2cG3S8M/Equation1.png" width="300px" height="80px" title="Motion with drag"/><br>
 Where the drag coefficient <i>k</i> is a positive constant representing resistance due to air density.<br><br>
 
-<img src="https://media.giphy.com/media/9OZVctKK14tCqtcFxf/giphy.gif" title="Trajectory motion">
+<img src="https://i.ibb.co/YNYNvvv/image.png" alt="image" border="0">
